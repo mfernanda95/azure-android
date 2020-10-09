@@ -51,7 +51,7 @@ steps:
       echo "+ ------------------------------ +"
       echo "|         Instalando             |"
       echo "+ ------------------------------ +"
-      echo "y" | $./sdkmanager --install 'system-images;android-27;google_apis;x86'
+      echo y | ./sdkmanager --install 'system-images;android-27;google_apis;x86'
 
       echo "+ ------------------------------ +"
       echo "|         Creando emulador       |"
