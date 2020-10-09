@@ -49,6 +49,11 @@ steps:
 
       cd $ANDROID_HOME/tools/bin
       echo "+ ------------------------------ +"
+      echo "|     Paquetes instalados        |"
+      echo "+ ------------------------------ +"
+      echo y | ./sdkmanager --list 
+
+      echo "+ ------------------------------ +"
       echo "|         Instalando             |"
       echo "+ ------------------------------ +"
       echo y | ./sdkmanager --install 'system-images;android-27;google_apis;x86'
