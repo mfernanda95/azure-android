@@ -80,10 +80,12 @@ steps:
       echo "+ ------------------------------ +"
       echo "|            Show avd            |"
       echo "+ ------------------------------ +"
-      echo "cd ~/.android/"
+      echo "----------------->  cd ~/.android/"
       cd ~/.android/
-      echo "cd ~/.android/avd/"
+      ls
+      echo "----------------->  cd ~/.android/avd/"
       cd ~/.android/avd/
+      ls
 
       echo "+ ------------------------------ +"
       echo "|          adb devices           |"
