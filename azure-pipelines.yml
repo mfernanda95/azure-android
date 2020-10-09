@@ -44,30 +44,32 @@ steps:
 - task: CmdLine@2
   inputs:
     script: |
-      FOO="some value"
-      echo "##vso[task.setvariable variable=FOO_PASS]$FOO"
-      echo "ANDROID_HOME = "$ANDROID_HOME
-      echo "+ ------------------------------ +"
-      echo "|     $ANDROID_HOME        |"
-      echo "+ ------------------------------ +"
-      ls -la $ANDROID_HOME
-      echo "+ ------------------------------ +"
-      echo "|     $ANDROID_HOME/emulator        |"
-      echo "+ ------------------------------ +"
-      ls -la $ANDROID_HOME/emulator
-      cd $ANDROID_HOME/emulator
-      echo "+ ------------------------------ +"
-      echo "|     tar emulator        |"
-      echo "+ ------------------------------ +"
-      tar -czf emulator.tar.gz $ANDROID_HOME/emulator/.
-      echo "+ ------------------------------ +"
-      echo "|     ANDROID_HOME/tools      |"
-      echo "+ ------------------------------ +"
-      ls -la $ANDROID_HOME/tools
-      echo "+ ------------------------------ +"
-      echo "|     ANDROID_HOME/tools /emulator     |"
-      echo "+ ------------------------------ +"
-      ls -la $ANDROID_HOME/tools/emulator
+      touch hola.txt
+      tar -czf emulator.tar.gz hola.txt
+#      FOO="some value"
+#      echo "##vso[task.setvariable variable=FOO_PASS]$FOO"
+#      echo "ANDROID_HOME = "$ANDROID_HOME
+#      echo "+ ------------------------------ +"
+#      echo "|     $ANDROID_HOME        |"
+#      echo "+ ------------------------------ +"
+#      ls -la $ANDROID_HOME
+#      echo "+ ------------------------------ +"
+#      echo "|     $ANDROID_HOME/emulator        |"
+#      echo "+ ------------------------------ +"
+#      ls -la $ANDROID_HOME/emulator
+#      cd $ANDROID_HOME/emulator
+#      echo "+ ------------------------------ +"
+#      echo "|     tar emulator        |"
+#      echo "+ ------------------------------ +"
+#      tar -czf emulator.tar.gz $ANDROID_HOME/emulator/.
+#      echo "+ ------------------------------ +"
+#      echo "|     ANDROID_HOME/tools      |"
+#      echo "+ ------------------------------ +"
+#      ls -la $ANDROID_HOME/tools
+#      echo "+ ------------------------------ +"
+#      echo "|     ANDROID_HOME/tools /emulator     |"
+#      echo "+ ------------------------------ +"
+#      ls -la $ANDROID_HOME/tools/emulator
 #- task: CmdLine@2
 #  inputs:
 #    script: |
