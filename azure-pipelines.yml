@@ -51,14 +51,19 @@ steps:
       echo "+ ------------------------------ +"
       echo "|         Creando emulador       |"
       echo "+ ------------------------------ +"
-      echo no | ./avdmanager create avd --force --name EMULATOR_API_27 --abi google_apis/x86 --package 'system-images;android-27;google_apis/x86' --device "Nexus 5X"
+      echo no | ./avdmanager create avd --force --name EMULATOR_API_27 --abi google_apis/x86 --package 'system-images;android-27;google_apis;x86' --device "Nexus 5X"
       
       echo "+ ------------------------------ +"
       echo "|       Listando emuladores      |"
       echo "+ ------------------------------ +"
       cd $ANDROID_HOME/tools
       ./emulator -list-avds
-
+      $ANDROID_HOME/tools/emulator -list-avds
+      echo "+ ------------------------------ +"
+      echo "|       adb devices      |"
+      echo "+ ------------------------------ +"
+      $ANDROID_HOME/platform-tools/adb devices
+      set -e pipefail
       # Install AVD files
       #echo "y" | $ANDROID_HOME/tools/bin/sdkmanager --install 'system-images;android-27;google_apis;x86'
       #
