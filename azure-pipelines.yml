@@ -80,6 +80,6 @@ steps:
 - task: CmdLine@2
   inputs:
     script: |
-      echo "FOO  "$(FOO)
+      echo "FOO  "$FOO
       echo "FOO_PASS  "$(FOO_PASS)
       
