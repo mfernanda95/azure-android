@@ -121,17 +121,28 @@ steps:
     Contents: 'emulator.zip'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
-- task: CopyFiles@2
-  inputs:
-    SourceFolder: '$(System.DefaultWorkingDirectory)/tmp'
-    Contents: 'emulator.tar.gz'
-    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+#- task: CopyFiles@2
+#  inputs:
+#    SourceFolder: '$(System.DefaultWorkingDirectory)/tmp'
+#    Contents: 'emulator.tar.gz'
+#    TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
     publishLocation: 'Container'
+- task: UniversalPackages@0
+  displayName: 'Publicar Tools de App Movil Android'
+  inputs:
+    command: 'publish'
+    publishDirectory: '$(System.DefaultWorkingDirectory)/tmp'
+    feedsToUsePublish: 'internal'
+    vstsFeedPublish: '6163bd23-d1c2-4dc7-bb04-2649ff044119/a3f1f579-d22a-4a7a-976d-f6582d06564e'
+    vstsFeedPackagePublish: 'app-deploy-tools-android'
+    versionOption: 'minor'
+    packagePublishDescription: 'Emulator Android'
+    verbosity: 'Information'
 - task: CmdLine@2
   inputs:
     script: |
