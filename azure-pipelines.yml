@@ -58,11 +58,11 @@ steps:
       echo "ANDROID_HOME =  "$ANDROID_HOME
       echo "ANDROID_SDK_ROOT =  "$ANDROID_SDK_ROOT
       PATH=$PATH:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools/:$ANDROID_HOME/tools/
-      
+      sdkmanager --update  
       echo "+ ------------------------------ +"
       echo "|     Paquetes instalados        |"
       echo "+ ------------------------------ +"
-      echo y | sdkmanager --list 
+      #echo y | sdkmanager --list 
 
       echo "+ ------------------------------ +"
       echo "|         Instalando             |"
