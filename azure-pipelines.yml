@@ -39,6 +39,7 @@ steps:
   inputs:
     script: |
       PATH=$PATH:$ANDROID_HOME/tools/bin:$ANDROID_HOME/tools/emulator
+      ls -la $ANDROID_HOME/tools/
       ls -la $ANDROID_HOME/tools/emulator
   displayName: Configurando PATH
 #- task: CmdLine@2
