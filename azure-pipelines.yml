@@ -38,6 +38,8 @@ steps:
 - task: CmdLine@2
   inputs:
     script: |
+      FOO="some value"
+      echo "##vso[task.setvariable variable=FOO]$FOO"
       echo "ANDROID_HOME = "$ANDROID_HOME
       ls -la $ANDROID_HOME
       ls -la $ANDROID_HOME/emulator
@@ -75,3 +77,9 @@ steps:
 #    artifactName: 'drop'
 #    artifactType: 'container'
 #  displayName: Publish artifacts
+- task: CmdLine@2
+  inputs:
+    script: |
+     
+      echo $FOO
+      
