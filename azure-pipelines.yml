@@ -38,77 +38,83 @@ steps:
 - task: CmdLine@2
   inputs:
     script: |
-      cd $ANDROID_HOME
-      pwd
-      echo '>>>>>     ls -la '
-      ls -la 
-      echo '>>>>>     ls -la tools'
-      ls -la tools
-      echo '>>>>>     ls -la tools/bin'
-      ls -la tools/bin
-
-      cd $ANDROID_HOME/tools/bin
-      echo "+ ------------------------------ +"
-      echo "|     Paquetes instalados        |"
-      echo "+ ------------------------------ +"
-      echo y | ./sdkmanager --list 
-
-      echo "+ ------------------------------ +"
-      echo "|         Instalando             |"
-      echo "+ ------------------------------ +"
-      echo y | ./sdkmanager --install 'system-images;android-27;google_apis;x86'
-
-      echo "+ ------------------------------ +"
-      echo "|         Creando emulador       |"
-      echo "+ ------------------------------ +"
-      echo no | ./avdmanager create avd --force --name EMULATOR_API_27 --abi google_apis/x86 --package 'system-images;android-27;google_apis;x86' --device "Nexus 5X"
-      
-      echo "+ ------------------------------ +"
-      echo "|       Listando emuladores      |"
-      echo "+ ------------------------------ +"
-      $ANDROID_HOME/tools/emulator -list-avds
-      echo "+ ------------------------------ +"
-      echo "|          adb devices           |"
-      echo "+ ------------------------------ +"
-      $ANDROID_HOME/platform-tools/adb devices
-      echo "+ ------------------------------ +"
-      echo "|       Iniciando emulador       |"
-      echo "+ ------------------------------ +"
-      cd $ANDROID_HOME/tools
-      ./emulator -avd EMULATOR_API_27 -engine-auto -no-audio -wipe-data -no-cache -no-boot-anim -no-snapstorage
-      echo "+ ------------------------------ +"
-      echo "|          adb devices           |"
-      echo "+ ------------------------------ +"
-      $ANDROID_HOME/platform-tools/adb devices
-      set -e pipefail
-      # Install AVD files
-      #echo "y" | $ANDROID_HOME/tools/bin/sdkmanager --install 'system-images;android-27;google_apis;x86'
-      #
-      ## Create emulator
-      #echo "no" | $ANDROID_HOME/tools/bin/avdmanager create avd -n xamarin_android_emulator -k 'system-images;android-27;google_apis;x86' --force
-      #
-      #$ANDROID_HOME/emulator/emulator -list-avds
-      #
-      #echo "Starting emulator"
-      #
-      ## Start emulator in background
-      #nohup $ANDROID_HOME/emulator/emulator -avd xamarin_android_emulator -no-snapshot > /dev/null 2>&1 &
-      #$ANDROID_HOME/platform-tools/adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed | tr -d '\r') ]]; do sleep 1; done; input keyevent 82'
-      #
-      #$ANDROID_HOME/platform-tools/adb devices
-      #
-      #echo "Emulator started"
-  displayName: Emulator started
-  
-#- task: CopyFiles@2
+      PATH=$PATH:$ANDROID_HOME/tools/bin:$ANDROID_HOME/tools/emulator
+      ls -la $ANDROID_HOME/tools/emulator
+  displayName: Configurando PATH
+#- task: CmdLine@2
 #  inputs:
-#    contents: '**/*.apk'
-#    targetFolder: '$(build.artifactStagingDirectory)'
-#  displayName: Copy .apk files to artifact staging directory
+#    script: |
+#      cd $ANDROID_HOME
+#      pwd
+#      echo '>>>>>     ls -la '
+#      ls -la 
+#      echo '>>>>>     ls -la tools'
+#      ls -la tools
+#      echo '>>>>>     ls -la tools/bin'
+#      ls -la tools/bin
 #
-#- task: PublishBuildArtifacts@1
-#  inputs:
-#    pathToPublish: '$(build.artifactStagingDirectory)'
-#    artifactName: 'drop'
-#    artifactType: 'container'
-#  displayName: Publish artifacts
+#      cd $ANDROID_HOME/tools/bin
+#      echo "+ ------------------------------ +"
+#      echo "|     Paquetes instalados        |"
+#      echo "+ ------------------------------ +"
+#      echo y | ./sdkmanager --list 
+#
+#      echo "+ ------------------------------ +"
+#      echo "|         Instalando             |"
+#      echo "+ ------------------------------ +"
+#      echo y | ./sdkmanager --install 'system-images;android-27;google_apis;x86'
+#
+#      echo "+ ------------------------------ +"
+#      echo "|         Creando emulador       |"
+#      echo "+ ------------------------------ +"
+#      echo no | ./avdmanager create avd --force --name EMULATOR_API_27 --abi google_apis/x86 --package 'system-images;android-27;google_apis;x86' --device "Nexus 5X"
+#      
+#      echo "+ ------------------------------ +"
+#      echo "|       Listando emuladores      |"
+#      echo "+ ------------------------------ +"
+#      $ANDROID_HOME/tools/emulator -list-avds
+#      echo "+ ------------------------------ +"
+#      echo "|          adb devices           |"
+#      echo "+ ------------------------------ +"
+#      $ANDROID_HOME/platform-tools/adb devices
+#      echo "+ ------------------------------ +"
+#      echo "|       Iniciando emulador       |"
+#      echo "+ ------------------------------ +"
+#      cd $ANDROID_HOME/tools
+#      ./emulator -avd EMULATOR_API_27 -engine-auto -no-audio -wipe-data -no-cache -no-boot-anim -no-snapstorage
+#      echo "+ ------------------------------ +"
+#      echo "|          adb devices           |"
+#      echo "+ ------------------------------ +"
+#      $ANDROID_HOME/platform-tools/adb devices
+#      set -e pipefail
+#      # Install AVD files
+#      #echo "y" | $ANDROID_HOME/tools/bin/sdkmanager --install 'system-images;android-27;google_apis;x86'
+#      #
+#      ## Create emulator
+#      #echo "no" | $ANDROID_HOME/tools/bin/avdmanager create avd -n xamarin_android_emulator -k 'system-images;android-27;google_apis;x86' --force
+#      #
+#      #$ANDROID_HOME/emulator/emulator -list-avds
+#      #
+#      #echo "Starting emulator"
+#      #
+#      ## Start emulator in background
+#      #nohup $ANDROID_HOME/emulator/emulator -avd xamarin_android_emulator -no-snapshot > /dev/null 2>&1 &
+#      #$ANDROID_HOME/platform-tools/adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed | tr -d '\r') ]]; do sleep 1; done; input keyevent 82'
+#      #
+#      #$ANDROID_HOME/platform-tools/adb devices
+#      #
+#      #echo "Emulator started"
+#  displayName: Emulator started
+#  
+##- task: CopyFiles@2
+##  inputs:
+##    contents: '**/*.apk'
+##    targetFolder: '$(build.artifactStagingDirectory)'
+##  displayName: Copy .apk files to artifact staging directory
+##
+##- task: PublishBuildArtifacts@1
+##  inputs:
+##    pathToPublish: '$(build.artifactStagingDirectory)'
+##    artifactName: 'drop'
+##    artifactType: 'container'
+##  displayName: Publish artifacts
