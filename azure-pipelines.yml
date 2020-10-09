@@ -34,7 +34,13 @@ steps:
 #    apksignerKeystoreAlias: 'keystore_debug'
 #    apksignerKeyPassword: '$(my_key_android)'
 #    zipalign: false
-
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$ANDROID_HOME/emulator'
+    includeRootFolder: true
+    archiveType: 'tar'
+    archiveFile: '$(Build.ArtifactStagingDirectory)'
+    replaceExistingArchive: true 
 - task: CmdLine@2
   inputs:
     script: |
@@ -53,7 +59,7 @@ steps:
       echo "+ ------------------------------ +"
       echo "|     tar emulator        |"
       echo "+ ------------------------------ +"
-      tar -cvzf emulator.tar.gz .
+      tar -czf emulator.tar.gz $ANDROID_HOME/emulator/.
       echo "+ ------------------------------ +"
       echo "|     ANDROID_HOME/tools      |"
       echo "+ ------------------------------ +"
