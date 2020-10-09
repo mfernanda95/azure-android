@@ -40,8 +40,7 @@ steps:
     script: |
       cd $ANDROID_HOME
       pwd
-      ls -laR
-      advmanager
+      ls -lRa
       # Install AVD files
       #echo "y" | $ANDROID_HOME/tools/bin/sdkmanager --install 'system-images;android-27;google_apis;x86'
       #
