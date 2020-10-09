@@ -40,8 +40,7 @@ steps:
     script: |
         PATH=$PATH:$ANDROID_HOME/tools/bin:$ANDROID_HOME/tools/:$ANDROID_HOME/platform-tools/   
         sudo ls /
-        sudo ls -l /Users
-        sudo ls -l /Users/runners
+        find ~ -name ".android"
   displayName: Configurando PATH
 #- task: CmdLine@2
 #  inputs:
