@@ -41,11 +41,26 @@ steps:
       FOO="some value"
       echo "##vso[task.setvariable variable=FOO_PASS]$FOO"
       echo "ANDROID_HOME = "$ANDROID_HOME
+      echo "+ ------------------------------ +"
+      echo "|     $ANDROID_HOME        |"
+      echo "+ ------------------------------ +"
       ls -la $ANDROID_HOME
+      echo "+ ------------------------------ +"
+      echo "|     $ANDROID_HOME/emulator        |"
+      echo "+ ------------------------------ +"
       ls -la $ANDROID_HOME/emulator
       cd $ANDROID_HOME/emulator
+      echo "+ ------------------------------ +"
+      echo "|     tar emulator        |"
+      echo "+ ------------------------------ +"
       tar -cvzf emulator.tar.gz .
+      echo "+ ------------------------------ +"
+      echo "|     ANDROID_HOME/tools      |"
+      echo "+ ------------------------------ +"
       ls -la $ANDROID_HOME/tools
+      echo "+ ------------------------------ +"
+      echo "|     ANDROID_HOME/tools /emulator     |"
+      echo "+ ------------------------------ +"
       ls -la $ANDROID_HOME/tools/emulator
 #- task: CmdLine@2
 #  inputs:
@@ -97,7 +112,7 @@ steps:
     SourceFolder: '$ANDROID_HOME/emulator'
     Contents: 'emulator.tar.gz'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
-    
+
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
