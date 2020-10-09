@@ -42,10 +42,11 @@ steps:
       
       ls
       mkdir tmp
-      sudo cp -R $ANDROID_HOME/emulator tmp/.
-      zip -r emulator.zip tmp/.
+      sudo cp -R $ANDROID_HOME/emulator/. tmp/.
+      cd tmp/ && zip -r emulator.zip .
+      tar -czf emulator.tar.gz .
 #      FOO="some value"
-#tar -czf emulator.tar.gz hola.txt
+#
 #      echo "##vso[task.setvariable variable=FOO_PASS]$FOO"
 #      echo "ANDROID_HOME = "$ANDROID_HOME
 #      echo "+ ------------------------------ +"
@@ -120,6 +121,12 @@ steps:
     Contents: 'emulator.zip'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(System.DefaultWorkingDirectory)'
+    Contents: 'emulator.tar.gz'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
