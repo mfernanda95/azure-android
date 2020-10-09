@@ -2,7 +2,9 @@
 # Build your Android project with Gradle.
 # Add steps that test, sign, and distribute the APK, save build artifacts, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/android
-
+variables:
+  platform_version: 27
+  device: Nexus5
 pool:
   vmImage: 'ubuntu-latest'
 
@@ -39,8 +41,9 @@ steps:
   inputs:
     script: |
         PATH=$PATH:$ANDROID_HOME/tools/bin:$ANDROID_HOME/tools/:$ANDROID_HOME/platform-tools/   
-        sudo ls /
-        find ~ -name ".android"
+        echo $PATH
+        #sudo ls /
+        cd ~/.android/avd/
   displayName: Configurando PATH
 #- task: CmdLine@2
 #  inputs:
