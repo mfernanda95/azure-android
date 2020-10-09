@@ -46,8 +46,13 @@ steps:
       ls -la tools
       echo '>>>>>     ls -la tools/bin'
       ls -la tools/bin
+
       cd $ANDROID_HOME/tools/bin
-      echo no
+      echo "+ ------------------------------ +"
+      echo "|         Instalando             |"
+      echo "+ ------------------------------ +"
+      echo "y" | $./sdkmanager --install 'system-images;android-27;google_apis;x86'
+
       echo "+ ------------------------------ +"
       echo "|         Creando emulador       |"
       echo "+ ------------------------------ +"
