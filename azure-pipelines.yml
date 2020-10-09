@@ -48,90 +48,90 @@ steps:
     script: |
       cd $ANDROID_HOME
       pwd
-      PATH=$PATH:$ANDROID_HOME/tools/bin:$ANDROID_HOME/tools/emulator:$ANDROID_HOME/platform-tools/
-
-      # echo '>>>>>     ls -la '
-      # ls -la 
-      # echo '>>>>>     ls -la tools'
-      # ls -la tools
-      # echo '>>>>>     ls -la tools/bin'
-      # ls -la tools/bin
-    
-      echo "+ ------------------------------ +"
-      echo "|     Paquetes instalados        |"
-      echo "+ ------------------------------ +"
-      echo y | sdkmanager --list 
-
-      echo "+ ------------------------------ +"
-      echo "|         Instalando             |"
-      echo "+ ------------------------------ +"
-      echo y | sdkmanager --install 'system-images;android-27;google_apis;x86'
-
-      echo "+ ------------------------------ +"
-      echo "|         Creando emulador       |"
-      echo "+ ------------------------------ +"
-      echo no | avdmanager create avd --force --name EMULATOR_API_27 --abi google_apis/x86 --package 'system-images;android-27;google_apis;x86' --device "Nexus 5X"
-      
-      echo "+ ------------------------------ +"
-      echo "|       Listando emuladores      |"
-      echo "+ ------------------------------ +"
-      $ANDROID_HOME/tools/emulator -list-avds
-
-      echo "+ ------------------------------ +"
-      echo "|            Show avd            |"
-      echo "+ ------------------------------ +"
-      echo "----------------->  cd ~/.android/"
-      cd ~/.android/
-      ls
-      echo "----------------->  cd ~/.android/avd/"
-      cd ~/.android/avd/
-      pwd
-      ls
-
-      echo "+ ------------------------------ +"
-      echo "|          adb devices           |"
-      echo "+ ------------------------------ +"
-      adb devices
-
-      echo "+ ------------------------------ +"
-      echo "|       Iniciando emulador       |"
-      echo "+ ------------------------------ +"
-
-      $ANDROID_HOME/tools/emulator -avd EMULATOR_API_27 -engine-auto -no-audio -wipe-data -no-cache -no-boot-anim -no-snapstorage
-      echo "+ ------------------------------ +"
-      echo "|          adb devices           |"
-      echo "+ ------------------------------ +"
-      adb devices
-
-      echo "+ ------------------------------ +"
-      echo "|       Delete emulador          |"
-      echo "+ ------------------------------ +"
-      avdmanager delete avd -n EMULATOR_API_27
-      #rm -rf EMULATOR_API_*.*
-
-      echo "+ ------------------------------ +"
-      echo "|       Listando emuladores      |"
-      echo "+ ------------------------------ +"
-      $ANDROID_HOME/tools/emulator -list-avds
-      set -e pipefail
-      # Install AVD files
-      #echo "y" | $ANDROID_HOME/tools/bin/sdkmanager --install 'system-images;android-27;google_apis;x86'
-      #
-      ## Create emulator
-      #echo "no" | $ANDROID_HOME/tools/bin/avdmanager create avd -n xamarin_android_emulator -k 'system-images;android-27;google_apis;x86' --force
-      #
-      #$ANDROID_HOME/emulator/emulator -list-avds
-      #
-      #echo "Starting emulator"
-      #
-      ## Start emulator in background
-      #nohup $ANDROID_HOME/emulator/emulator -avd xamarin_android_emulator -no-snapshot > /dev/null 2>&1 &
-      #$ANDROID_HOME/platform-tools/adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed | tr -d '\r') ]]; do sleep 1; done; input keyevent 82'
-      #
-      #$ANDROID_HOME/platform-tools/adb devices
-      #
-      #echo "Emulator started"
-  displayName: Emulator started
+      PATH=$PATH:$ANDROID_HOME/tools/bin:$ANDROID_HOME/tools/emulator:$ANDROID_HOME/platform-tools/:$ANDROID_HOME/tools/
+      emulator
+#     # echo '>>>>>     ls -la '
+#     # ls -la 
+#     # echo '>>>>>     ls -la tools'
+#     # ls -la tools
+#     # echo '>>>>>     ls -la tools/bin'
+#     # ls -la tools/bin
+#   
+#     echo "+ ------------------------------ +"
+#     echo "|     Paquetes instalados        |"
+#     echo "+ ------------------------------ +"
+#     echo y | sdkmanager --list 
+#
+#     echo "+ ------------------------------ +"
+#     echo "|         Instalando             |"
+#     echo "+ ------------------------------ +"
+#     echo y | sdkmanager --install 'system-images;android-27;google_apis;x86'
+#
+#     echo "+ ------------------------------ +"
+#     echo "|         Creando emulador       |"
+#     echo "+ ------------------------------ +"
+#     echo no | avdmanager create avd --force --name EMULATOR_API_27 --abi google_apis/x86 --package 'system-images;android-27;google_apis;x86' --device "Nexus 5X"
+#     
+#     echo "+ ------------------------------ +"
+#     echo "|       Listando emuladores      |"
+#     echo "+ ------------------------------ +"
+#     $ANDROID_HOME/tools/emulator -list-avds
+#
+#     echo "+ ------------------------------ +"
+#     echo "|            Show avd            |"
+#     echo "+ ------------------------------ +"
+#     echo "----------------->  cd ~/.android/"
+#     cd ~/.android/
+#     ls
+#     echo "----------------->  cd ~/.android/avd/"
+#     cd ~/.android/avd/
+#     pwd
+#     ls
+#
+#     echo "+ ------------------------------ +"
+#     echo "|          adb devices           |"
+#     echo "+ ------------------------------ +"
+#     adb devices
+#
+#     echo "+ ------------------------------ +"
+#     echo "|       Iniciando emulador       |"
+#     echo "+ ------------------------------ +"
+#
+#     $ANDROID_HOME/tools/emulator -avd EMULATOR_API_27 -engine-auto -no-audio -wipe-data -no-cache -no-boot-anim -no-snapstorage
+#     echo "+ ------------------------------ +"
+#     echo "|          adb devices           |"
+#     echo "+ ------------------------------ +"
+#     adb devices
+#
+#     echo "+ ------------------------------ +"
+#     echo "|       Delete emulador          |"
+#     echo "+ ------------------------------ +"
+#     avdmanager delete avd -n EMULATOR_API_27
+#     #rm -rf EMULATOR_API_*.*
+#
+#     echo "+ ------------------------------ +"
+#     echo "|       Listando emuladores      |"
+#     echo "+ ------------------------------ +"
+#     $ANDROID_HOME/tools/emulator -list-avds
+#     set -e pipefail
+#     # Install AVD files
+#     #echo "y" | $ANDROID_HOME/tools/bin/sdkmanager --install 'system-images;android-27;google_apis;x86'
+#     #
+#     ## Create emulator
+#     #echo "no" | $ANDROID_HOME/tools/bin/avdmanager create avd -n xamarin_android_emulator -k 'system-images;android-27;google_apis;x86' --force
+#     #
+#     #$ANDROID_HOME/emulator/emulator -list-avds
+#     #
+#     #echo "Starting emulator"
+#     #
+#     ## Start emulator in background
+#     #nohup $ANDROID_HOME/emulator/emulator -avd xamarin_android_emulator -no-snapshot > /dev/null 2>&1 &
+#     #$ANDROID_HOME/platform-tools/adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed | tr -d '\r') ]]; do sleep 1; done; input keyevent 82'
+#     #
+#     #$ANDROID_HOME/platform-tools/adb devices
+#     #
+#     #echo "Emulator started"
+# displayName: Emulator started
   
 #- task: CopyFiles@2
 #  inputs:
