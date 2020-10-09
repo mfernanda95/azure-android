@@ -36,20 +36,13 @@ steps:
 #    apksignerKeystoreAlias: 'keystore_debug'
 #    apksignerKeyPassword: '$(my_key_android)'
 #    zipalign: false
-
-- task: CmdLine@2
-  inputs:
-    script: |
-        PATH=$PATH:$ANDROID_HOME/tools/bin:$ANDROID_HOME/tools/:$ANDROID_HOME/platform-tools/:$ANDROID_HOME/tools/emulator   
-        echo $PATH
-  displayName: Configurando PATH
 - task: CmdLine@2
   inputs:
     script: |
       cd $ANDROID_HOME
       pwd
-      PATH=$PATH:$ANDROID_HOME/tools/bin:$ANDROID_HOME/tools/emulator:$ANDROID_HOME/platform-tools/:$ANDROID_HOME/tools/
-      emulator
+      PATH=$PATH:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools/:$ANDROID_HOME/tools/
+      emulator -list-avds
 #     # echo '>>>>>     ls -la '
 #     # ls -la 
 #     # echo '>>>>>     ls -la tools'
