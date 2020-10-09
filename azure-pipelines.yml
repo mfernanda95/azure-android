@@ -106,8 +106,8 @@ steps:
       echo "+ ------------------------------ +"
       echo "|       Delete emulador          |"
       echo "+ ------------------------------ +"
-      #avdmanager create avd -n EMULATOR_API_27
-      rm -rf EMULATOR_API_*.*
+      avdmanager delete avd -n EMULATOR_API_27
+      #rm -rf EMULATOR_API_*.*
 
       echo "+ ------------------------------ +"
       echo "|       Listando emuladores      |"
