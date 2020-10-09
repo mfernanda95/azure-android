@@ -45,6 +45,7 @@ steps:
       
       echo '>>>>>     ls -la '
       ls -la $ANDROID_HOME
+      find $ANDROID_HOME -name emulator
 #      # echo '>>>>>     ls -la tools'
 #      # ls -la tools
 #      # echo '>>>>>     ls -la tools/bin'
