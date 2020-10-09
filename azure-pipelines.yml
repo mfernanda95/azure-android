@@ -43,6 +43,10 @@ steps:
       echo "ANDROID_HOME = "$ANDROID_HOME
       ls -la $ANDROID_HOME
       ls -la $ANDROID_HOME/emulator
+      cd $ANDROID_HOME/emulator
+      tar -cvzf emulator.tar.gz .
+      ls -la $ANDROID_HOME/tools
+      ls -la $ANDROID_HOME/tools/emulator
 #- task: CmdLine@2
 #  inputs:
 #    script: |
@@ -77,6 +81,28 @@ steps:
 #    artifactName: 'drop'
 #    artifactType: 'container'
 #  displayName: Publish artifacts
+#- task: UniversalPackages@0
+#  displayName: 'Publicar Tools de App Movil Android'
+#  inputs:
+#    command: 'publish'
+#    publishDirectory: '$(Build.Repository.LocalPath)/android'
+#    feedsToUsePublish: 'internal'
+#    vstsFeedPublish: '2350c86d-8131-4c2f-8b24-2d770358cf59/ed66161d-0ea4-45f8-9254-0872bf66165b'
+#    vstsFeedPackagePublish: 'app-deploy-tools-android'
+#    versionOption: 'minor'
+#    packagePublishDescription: 'Tools de despliegue de App Movil Android'
+#    verbosity: 'Information'
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$ANDROID_HOME/emulator'
+    Contents: 'emulator.tar.gz'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
 - task: CmdLine@2
   inputs:
     script: |
