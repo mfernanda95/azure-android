@@ -39,11 +39,11 @@ steps:
 - task: CmdLine@2
   inputs:
     script: |
-      echo $ANDROID_HOME
+      echo "ANDROID_HOME"$ANDROID_HOME
       PATH=$PATH:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools/:$ANDROID_HOME/tools/
       
-      echo $ANDROID_SDK_ROOT
-      echo $ANDROID_SDK_HOME
+      echo "ANDROID_SDK_ROOT"$ANDROID_SDK_ROOT
+      echo "ANDROID_SDK_HOME"$ANDROID_SDK_HOME
 #      # echo '>>>>>     ls -la '
 #      # ls -la 
 #      # echo '>>>>>     ls -la tools'
