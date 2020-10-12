@@ -42,7 +42,7 @@ steps:
     script: |
       PATH=$PATH:$ANDROID_HOME/tools/bin:$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools
       cat > ~/.android/repositories.cfg
-      yum install libpulse0:i386
+      apt-get install libpulse0:i386
 
 #      echo "+ ------------------------------ +"
 #      echo "|     Configurando emulador      |"
