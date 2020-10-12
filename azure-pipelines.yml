@@ -51,9 +51,7 @@ steps:
       echo "+ ------------------------------ +"
       echo "|     Configurando emulador      |"
       echo "+ ------------------------------ +"     
-      mkdir $ANDROID_HOME/emulator
-      unzip -q emulator.zip -d $ANDROID_HOME/emulator 
-      ls -la $ANDROID_HOME/emulator
+      sdkmanager 'emulator'
 
       echo "ANDROID_HOME =  "$ANDROID_HOME
       echo "ANDROID_SDK_ROOT =  "$ANDROID_SDK_ROOT
