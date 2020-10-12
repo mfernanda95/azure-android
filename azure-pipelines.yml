@@ -92,7 +92,7 @@ steps:
       echo "|       Iniciando emulador       |"
       echo "+ ------------------------------ +"
  
-      emulator -avd EMULATOR_API_27 -engine auto -no-audio -wipe-data -no-cache -no-boot-anim -no-snapstorage
+      emulator -avd EMULATOR_API_27 -no-audio -wipe-data -no-cache -no-boot-anim -no-snapstorage
       echo "+ ------------------------------ +"
       echo "|          adb devices           |"
       echo "+ ------------------------------ +"
