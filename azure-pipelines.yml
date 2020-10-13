@@ -44,9 +44,9 @@ steps:
       cat > ~/.android/repositories.cfg
       sudo apt-get install libpulse-dev
       sudo apt-get install cpu-checker
-      egrep -c '(vmx|svm)' /proc/cpuinfo
-      lsmod | grep -i kvm
-      kvm-ok
+      sudo egrep -c '(vmx|svm)' /proc/cpuinfo
+      sudo lsmod | grep -i kvm
+      sudo kvm-ok
       echo "+ ------------------------------ +"
       echo "|     Configurando emulador      |"
       echo "+ ------------------------------ +"     
