@@ -46,71 +46,71 @@ steps:
       sudo apt-get install cpu-checker
       egrep -c '(vmx|svm)' /proc/cpuinfo
       kvm-ok
-#      echo "+ ------------------------------ +"
-#      echo "|     Configurando emulador      |"
-#      echo "+ ------------------------------ +"     
-#      sdkmanager 'emulator'
-#
-#      echo "ANDROID_HOME =  "$ANDROID_HOME
-#      echo "ANDROID_SDK_ROOT =  "$ANDROID_SDK_ROOT
-#      PATH=$PATH:$ANDROID_HOME/emulator
-#      sdkmanager --update  
-#      echo "+ ------------------------------ +"
-#      echo "|     Paquetes instalados        |"
-#      echo "+ ------------------------------ +"
-#      #echo y | sdkmanager --list 
-#
-#      echo "+ ------------------------------ +"
-#      echo "|         Instalando             |"
-#      echo "+ ------------------------------ +"
-#      echo y | sdkmanager --install 'system-images;android-27;google_apis;x86'
-#
-#      echo "+ ------------------------------ +"
-#      echo "|         Creando emulador       |"
-#      echo "+ ------------------------------ +"
-#      echo no | avdmanager create avd --force --name EMULATOR_API_27 --abi google_apis/x86 --package 'system-images;android-27;google_apis;x86' --device "Nexus 5X"
-#      
-#      echo "+ ------------------------------ +"
-#      echo "|       Listando emuladores      |"
-#      echo "+ ------------------------------ +"
-#      emulator -list-avds
-# 
-#      echo "+ ------------------------------ +"
-#      echo "|            Show avd            |"
-#      echo "+ ------------------------------ +"
-#      echo "----------------->  cd ~/.android/"
-#      cd ~/.android/
-#      ls
-#      echo "----------------->  cd ~/.android/avd/"
-#      cd ~/.android/avd/
-#      pwd
-#      ls
-# 
-#      echo "+ ------------------------------ +"
-#      echo "|          adb devices           |"
-#      echo "+ ------------------------------ +"
-#      adb devices
-# 
-#      echo "+ ------------------------------ +"
-#      echo "|       Iniciando emulador       |"
-#      echo "+ ------------------------------ +"
-# 
-#      emulator -avd EMULATOR_API_27 -no-audio -wipe-data -no-cache -no-boot-anim -no-snapstorage
-#      echo "+ ------------------------------ +"
-#      echo "|          adb devices           |"
-#      echo "+ ------------------------------ +"
-#      adb devices
-# 
-#      echo "+ ------------------------------ +"
-#      echo "|       Delete emulador          |"
-#      echo "+ ------------------------------ +"
-#      avdmanager delete avd -n EMULATOR_API_27      
-#      #rm -rf EMULATOR_API_*.*
-# 
-#      echo "+ ------------------------------ +"
-#      echo "|       Listando emuladores      |"
-#      echo "+ ------------------------------ +"
-#      emulator -list-avds
+      echo "+ ------------------------------ +"
+      echo "|     Configurando emulador      |"
+      echo "+ ------------------------------ +"     
+      sdkmanager 'emulator'
+
+      echo "ANDROID_HOME =  "$ANDROID_HOME
+      echo "ANDROID_SDK_ROOT =  "$ANDROID_SDK_ROOT
+      PATH=$PATH:$ANDROID_HOME/emulator
+      sdkmanager --update  
+      echo "+ ------------------------------ +"
+      echo "|     Paquetes instalados        |"
+      echo "+ ------------------------------ +"
+      #echo y | sdkmanager --list 
+
+      echo "+ ------------------------------ +"
+      echo "|         Instalando             |"
+      echo "+ ------------------------------ +"
+      echo y | sdkmanager --install 'system-images;android-27;google_apis;x86'
+
+      echo "+ ------------------------------ +"
+      echo "|         Creando emulador       |"
+      echo "+ ------------------------------ +"
+      echo no | avdmanager create avd --force --name EMULATOR_API_27 --abi google_apis/x86 --package 'system-images;android-27;google_apis;x86' --device "Nexus 5X"
+      
+      echo "+ ------------------------------ +"
+      echo "|       Listando emuladores      |"
+      echo "+ ------------------------------ +"
+      emulator -list-avds
+ 
+      echo "+ ------------------------------ +"
+      echo "|            Show avd            |"
+      echo "+ ------------------------------ +"
+      echo "----------------->  cd ~/.android/"
+      cd ~/.android/
+      ls
+      echo "----------------->  cd ~/.android/avd/"
+      cd ~/.android/avd/
+      pwd
+      ls
+ 
+      echo "+ ------------------------------ +"
+      echo "|          adb devices           |"
+      echo "+ ------------------------------ +"
+      adb devices
+ 
+      echo "+ ------------------------------ +"
+      echo "|       Iniciando emulador       |"
+      echo "+ ------------------------------ +"
+ 
+      emulator -avd EMULATOR_API_27 -no-audio -wipe-data -no-cache -no-boot-anim -no-snapstorage
+      echo "+ ------------------------------ +"
+      echo "|          adb devices           |"
+      echo "+ ------------------------------ +"
+      adb devices
+ 
+      echo "+ ------------------------------ +"
+      echo "|       Delete emulador          |"
+      echo "+ ------------------------------ +"
+      avdmanager delete avd -n EMULATOR_API_27      
+      #rm -rf EMULATOR_API_*.*
+ 
+      echo "+ ------------------------------ +"
+      echo "|       Listando emuladores      |"
+      echo "+ ------------------------------ +"
+      emulator -list-avds
 #
 #      set -e pipefail
 #      # Install AVD files
