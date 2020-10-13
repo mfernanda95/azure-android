@@ -35,16 +35,16 @@ steps:
 #    apksignerKeyPassword: '$(my_key_android)'
 #    zipalign: false
 
-- task: CmdLine@2
-  inputs:
-    script: |
-      touch hola.txt
-      
-      ls
-      mkdir tmp
-      sudo cp -R $ANDROID_HOME/emulator/. tmp/.
-      cd tmp/ && zip -r emulator.zip .
-      tar -czf emulator.tar.gz .
+#- task: CmdLine@2
+#  inputs:
+#    script: |
+#      touch hola.txt
+#      
+#      ls
+#      mkdir tmp
+#      sudo cp -R $ANDROID_HOME/emulator/. tmp/.
+#      cd tmp/ && zip -r emulator.zip .
+#      tar -czf emulator.tar.gz .
 #      FOO="some value"
 #
 #      echo "##vso[task.setvariable variable=FOO_PASS]$FOO"
@@ -70,28 +70,28 @@ steps:
 #      echo "|     ANDROID_HOME/tools /emulator     |"
 #      echo "+ ------------------------------ +"
 #      ls -la $ANDROID_HOME/tools/emulator
-#- task: CmdLine@2
-#  inputs:
-#    script: |
-#
-#      # Install AVD files
-#      echo "y" | $ANDROID_HOME/tools/bin/sdkmanager --install 'system-images;android-27;google_apis;x86'
-#      
-#      # Create emulator
-#      echo "no" | $ANDROID_HOME/tools/bin/avdmanager create avd -n xamarin_android_emulator -k 'system-images;android-27;google_apis;x86' --force
-#      
-#      $ANDROID_HOME/emulator/emulator -list-avds
-#      
-#      echo "Starting emulator"
-#      
-#      # Start emulator in background
-#      nohup $ANDROID_HOME/emulator/emulator -avd xamarin_android_emulator -no-snapshot > /dev/null 2>&1 &
-#      $ANDROID_HOME/platform-tools/adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed | tr -d '\r') ]]; do sleep 1; done; input keyevent 82'
-#      
-#      $ANDROID_HOME/platform-tools/adb devices
-#      
-#      echo "Emulator started"
-#  displayName: Emulator started
+- task: CmdLine@2
+  inputs:
+    script: |
+
+      # Install AVD files
+      echo "y" | $ANDROID_HOME/tools/bin/sdkmanager --install 'system-images;android-27;google_apis;x86'
+      
+      # Create emulator
+      echo "no" | $ANDROID_HOME/tools/bin/avdmanager create avd -n xamarin_android_emulator -k 'system-images;android-27;google_apis;x86' --force
+      
+      $ANDROID_HOME/emulator/emulator -list-avds
+      
+      echo "Starting emulator"
+      
+      # Start emulator in background
+      nohup $ANDROID_HOME/emulator/emulator -avd xamarin_android_emulator -no-snapshot > /dev/null 2>&1 &
+      $ANDROID_HOME/platform-tools/adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed | tr -d '\r') ]]; do sleep 1; done; input keyevent 82'
+      
+      $ANDROID_HOME/platform-tools/adb devices
+      
+      echo "Emulator started"
+  displayName: Emulator started
 #- task: CopyFiles@2
 #  inputs:
 #    contents: '**/*.apk'
